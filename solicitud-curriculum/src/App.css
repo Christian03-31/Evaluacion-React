@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+input, select, textarea {
+  display: block;
+  margin: 8px auto;
+  padding: 8px;
+  width: 80%;
+  max-width: 400px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  background-color: #f9f9f9;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+li p {
+  margin: 6px 0;
+  font-size: 0.95em;
+}
+
