@@ -51,7 +51,7 @@ function HabilidadesPage() {
         descripcion,
       };
       localStorage.setItem('requisitos', JSON.stringify(datos));
-      navigate('/formulario'); // ✅ Navegación interna, misma pestaña
+      navigate('/formulario'); 
     }
   };
 
@@ -96,6 +96,7 @@ function HabilidadesPage() {
                     <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
                     <button
                       onClick={() => eliminarHabilidad(i)}
+                      className="btn-eliminar"
                       style={{ marginLeft: '10px', color: 'red' }}
                       title="Eliminar habilidad"
                     >
@@ -113,6 +114,7 @@ function HabilidadesPage() {
             <h3>Paso 2: Años de experiencia</h3>
             <input
               type="number"
+              min="0"
               placeholder="Ej: 3"
               value={experiencia}
               onChange={(e) => setExperiencia(e.target.value)}

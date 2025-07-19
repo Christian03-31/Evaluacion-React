@@ -37,7 +37,7 @@ function FormularioPage() {
 
     alert('Bien hecho, correo enviado de forma correcta');
 
-  
+
     setNombre('');
     setApellido('');
     setCorreo('');
@@ -65,7 +65,7 @@ function FormularioPage() {
 
         {requisitos && (
           <div style={{ marginBottom: '20px' }}>
-            <h3>Resumen de la informacion registrada</h3>
+            <h3>Resumen de la información registrada</h3>
             <ul>
               {requisitos.habilidades.map((h, i) => {
                 let claseNivel = 'habilidad-basico';
@@ -103,7 +103,11 @@ function FormularioPage() {
           value={correo}
           onChange={(e) => setCorreo(e.target.value)}
         />
-        <button onClick={enviar}>Enviar</button>
+
+        <div style={{ marginTop: '20px' }}>
+          <button onClick={() => navigate('/')}>Volver</button>
+          <button onClick={enviar} style={{ marginLeft: '10px' }}>Enviar</button>
+        </div>
       </div>
     </div>
   );

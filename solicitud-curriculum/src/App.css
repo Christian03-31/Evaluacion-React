@@ -113,3 +113,11 @@ li p {
   background-color: #ffffff;
   border-left: 6px solid #ccc;
 }
+
+.btn-eliminar {
+  font-size: 0.85em;
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
