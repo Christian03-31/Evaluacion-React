@@ -1,6 +1,9 @@
 # Evaluacion-React
 Descgargar node.js: https://nodejs.org/en
+
 Iniciarte en react: https://es.react.dev/learn/start-a-new-react-project
+
+LINK GITHUB https://github.com/Christian03-31/Evaluacion-React
 
 Cree unanueva pagina, pero siguiendo la misma idea del curriculum, el objetivo es que el postulante ingrese sus habilidades y experiancias, para luego mandarlas con un formulario
 Cree 2 paginas en donde se aplicaran todas las funciones en la carpeta src.
