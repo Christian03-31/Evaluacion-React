@@ -99,3 +99,17 @@ li p {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.habilidad-avanzado {
+  background-color: #d4edda; 
+  border-left: 6px solid #28a745;
+}
+
+.habilidad-intermedio {
+  background-color: #fff3cd; 
+  border-left: 6px solid #ffc107;
+}
+
+.habilidad-basico {
+  background-color: #ffffff;
+  border-left: 6px solid #ccc;
+}

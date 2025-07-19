@@ -86,18 +86,24 @@ function HabilidadesPage() {
             </select>
             <button onClick={agregarHabilidad}>Agregar habilidad</button>
             <ul>
-              {habilidades.map((h, i) => (
-                <li key={i}>
-                  <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
-                  <button
-                    onClick={() => eliminarHabilidad(i)}
-                    style={{ marginLeft: '10px', color: 'red' }}
-                    title="Eliminar habilidad"
-                  >
-                    ❌
-                  </button>
-                </li>
-              ))}
+              {habilidades.map((h, i) => {
+                let claseNivel = 'habilidad-basico';
+                if (h.nivel === 'Intermedio') claseNivel = 'habilidad-intermedio';
+                else if (h.nivel === 'Avanzado') claseNivel = 'habilidad-avanzado';
+
+                return (
+                  <li key={i} className={claseNivel}>
+                    <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
+                    <button
+                      onClick={() => eliminarHabilidad(i)}
+                      style={{ marginLeft: '10px', color: 'red' }}
+                      title="Eliminar habilidad"
+                    >
+                      ❌
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </>
         )}
@@ -140,11 +146,17 @@ function HabilidadesPage() {
           <>
             <h3>Resumen de informacion ingresada</h3>
             <ul>
-              {habilidades.map((h, i) => (
-                <li key={i}>
-                  <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
-                </li>
-              ))}
+              {habilidades.map((h, i) => {
+                let claseNivel = 'habilidad-basico';
+                if (h.nivel === 'Intermedio') claseNivel = 'habilidad-intermedio';
+                else if (h.nivel === 'Avanzado') claseNivel = 'habilidad-avanzado';
+
+                return (
+                  <li key={i} className={claseNivel}>
+                    <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
+                  </li>
+                );
+              })}
             </ul>
             <p><strong>Años de experiencia:</strong> {experiencia}</p>
             <p><strong>Nivel de estudios:</strong> {estudios}</p>

@@ -37,13 +37,13 @@ function FormularioPage() {
 
     alert('Bien hecho, correo enviado de forma correcta');
 
-    // Reiniciar campos
+  
     setNombre('');
     setApellido('');
     setCorreo('');
     localStorage.removeItem('requisitos');
 
-    // Redirigir al inicio
+
     navigate('/');
   };
 
@@ -67,11 +67,17 @@ function FormularioPage() {
           <div style={{ marginBottom: '20px' }}>
             <h3>Resumen de requisitos solicitados</h3>
             <ul>
-              {requisitos.habilidades.map((h, i) => (
-                <li key={i}>
-                  <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
-                </li>
-              ))}
+              {requisitos.habilidades.map((h, i) => {
+                let claseNivel = 'habilidad-basico';
+                if (h.nivel === 'Intermedio') claseNivel = 'habilidad-intermedio';
+                else if (h.nivel === 'Avanzado') claseNivel = 'habilidad-avanzado';
+
+                return (
+                  <li key={i} className={claseNivel}>
+                    <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
+                  </li>
+                );
+              })}
             </ul>
             <p><strong>Años de experiencia:</strong> {requisitos.experiencia}</p>
             <p><strong>Nivel de estudios requeridos:</strong> {requisitos.estudios}</p>
