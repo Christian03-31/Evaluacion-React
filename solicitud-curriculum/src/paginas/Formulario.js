@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function FormularioPage() {
+function FormularioPage() { //Estado para los campos de entrada del formulario
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [correo, setCorreo] = useState('');
@@ -9,6 +9,7 @@ function FormularioPage() {
   const [colorFondo, setColorFondo] = useState('#ffffff');
   const navigate = useNavigate();
 
+  //Al montar el componente, se recuperan los datos guardados
   useEffect(() => {
     const datosGuardados = localStorage.getItem('requisitos');
     if (datosGuardados) {
@@ -16,12 +17,13 @@ function FormularioPage() {
     }
   }, []);
 
+  //Funcion para validar el formato de correo electronico
   const validarCorreo = (email) => {
     return /\S+@\S+\.\S+/.test(email);
   };
 
   const enviar = () => {
-    if (
+    if ( //Valida los campos vacios
       nombre.trim() === '' ||
       apellido.trim() === '' ||
       correo.trim() === ''
@@ -30,24 +32,28 @@ function FormularioPage() {
       return;
     }
 
+    //Valida el formato de correo electronico
     if (!validarCorreo(correo)) {
       alert('Por favor, ingresa un correo electrónico válido.');
       return;
     }
 
+    //Este mensaje se envia cuando se ingresan los datos correctamente
     alert('Bien hecho, correo enviado de forma correcta');
 
 
+    //Con esto se limpian los daros ingresados
     setNombre('');
     setApellido('');
     setCorreo('');
     localStorage.removeItem('requisitos');
 
 
+    //COn este comando se redirecciona a la pagina inicial
     navigate('/');
   };
 
-  const cambiarColorFondo = () => {
+  const cambiarColorFondo = () => { //Cambia os colores del fondo 
     const colores = ['#ffffff', '#f0f0f0', '#f5e6b3'];
     const indiceActual = colores.indexOf(colorFondo);
     const siguienteIndice = (indiceActual + 1) % colores.length;
@@ -113,4 +119,5 @@ function FormularioPage() {
   );
 }
 
+//Exporta el componente para que sea utilizado en App.js
 export default FormularioPage;

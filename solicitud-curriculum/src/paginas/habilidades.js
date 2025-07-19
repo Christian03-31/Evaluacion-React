@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function HabilidadesPage() {
+  //define los estados para cada parte del formulario
   const [paso, setPaso] = useState(1);
   const [habilidades, setHabilidades] = useState([]);
   const [habilidad, setHabilidad] = useState('');
@@ -13,9 +14,10 @@ function HabilidadesPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Postulación";
+    document.title = "Postulación"; //cambia el titulo del documento
   }, []);
 
+  //Se utiliza para cambiar los colores de fondo del formulario
   const cambiarColorFondo = () => {
     const colores = ['#ffffff', '#f0f0f0', '#f5e6b3'];
     const indiceActual = colores.indexOf(colorFondo);
@@ -23,6 +25,7 @@ function HabilidadesPage() {
     setColorFondo(colores[siguienteIndice]);
   };
 
+  //Se utiliza para agregar las habilidades en el formulario
   const agregarHabilidad = () => {
     if (habilidad.trim() === '') return;
     setHabilidades([...habilidades, { habilidad, nivel }]);
@@ -30,11 +33,13 @@ function HabilidadesPage() {
     setNivel('Básico');
   };
 
+  //Es para borrar una habilidad
   const eliminarHabilidad = (indice) => {
     const nuevasHabilidades = habilidades.filter((_, i) => i !== indice);
     setHabilidades(nuevasHabilidades);
   };
 
+  //Avanza o finaliza los datos
   const continuar = () => {
     if (paso === 1 && habilidades.length === 0) return;
     if (paso === 2 && experiencia.trim() === '') return;
@@ -51,10 +56,11 @@ function HabilidadesPage() {
         descripcion,
       };
       localStorage.setItem('requisitos', JSON.stringify(datos));
-      navigate('/formulario'); 
+      navigate('/formulario');  //redirige al formulario final
     }
   };
 
+  //Retrocede un paso en el formulario
   const volver = () => {
     if (paso > 1) {
       setPaso(paso - 1);
@@ -95,7 +101,7 @@ function HabilidadesPage() {
                   <li key={i} className={claseNivel}>
                     <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
                     <button
-                      onClick={() => eliminarHabilidad(i)}
+                      onClick={() => eliminarHabilidad(i)} //Este boton sirve para eliminar una habilidad en caso de que te equivoques
                       className="btn-eliminar"
                       style={{ marginLeft: '10px', color: 'red' }}
                       title="Eliminar habilidad"
@@ -114,7 +120,7 @@ function HabilidadesPage() {
             <h3>Paso 2: Años de experiencia</h3>
             <input
               type="number"
-              min="0"
+              min="0" //Define el numero minimo de años de experiencia
               placeholder="Ej: 3"
               value={experiencia}
               onChange={(e) => setExperiencia(e.target.value)}
@@ -124,7 +130,7 @@ function HabilidadesPage() {
 
         {paso === 3 && (
           <>
-            <h3>Paso 3: Nivel de estudios</h3>
+            <h3>Paso 3: Nivel de estudios</h3> 
             <select value={estudios} onChange={(e) => setEstudios(e.target.value)}>
               <option value="">Seleccione una opción</option>
               <option value="Técnico">Técnico</option>
@@ -135,7 +141,7 @@ function HabilidadesPage() {
 
         {paso === 4 && (
           <>
-            <h3>Paso 4: Breve descripción de cómo trabaja</h3>
+            <h3>Paso 4: Breve descripción de cómo trabaja</h3> 
             <textarea
               placeholder="Ej: Responsable, proactivo, con buena comunicación..."
               value={descripcion}
@@ -177,4 +183,5 @@ function HabilidadesPage() {
   );
 }
 
+//Exporta el componente para que sea utilizado en App.js
 export default HabilidadesPage;

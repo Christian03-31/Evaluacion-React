@@ -1,4 +1,4 @@
-.App {
+.App { /*Estilo base de la aplicacion, venia instalado*/
   text-align: center;
 }
 
@@ -37,7 +37,7 @@
   }
 }
 
-input, select, textarea {
+input, select, textarea { /*Estilo para los input, select y textarea */
   display: block;
   margin: 8px auto;
   padding: 8px;
@@ -72,14 +72,14 @@ li p {
   font-size: 0.95em;
 }
 
-.contenedor {
+.contenedor { /* Se utilizo para centrar los datos*/
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
 
-.body-fondo {
+.body-fondo { /*Estilo para el color de fondo de la pagina*/
   background-color: #cceeff;
   min-height: 100vh;
   display: flex;
@@ -88,7 +88,7 @@ li p {
 }
 
 
-.contenedor2 {
+.contenedor2 { /*Estilo de color para las cajas, colo blanco*/
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
@@ -99,22 +99,22 @@ li p {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.habilidad-avanzado {
+.habilidad-avanzado { /*Estilo para las habilidades, color verde*/
   background-color: #d4edda; 
   border-left: 6px solid #28a745;
 }
 
-.habilidad-intermedio {
+.habilidad-intermedio { /*Estilo para las habilidades, color amarillo*/
   background-color: #fff3cd; 
   border-left: 6px solid #ffc107;
 }
 
-.habilidad-basico {
+.habilidad-basico { /*Estilo para las habilidades, color blanco*/
   background-color: #ffffff;
   border-left: 6px solid #ccc;
 }
 
-.btn-eliminar {
+.btn-eliminar { /*Se utilizo para ajistar el tamano del boton eliminar en habiliadades*/
   font-size: 0.85em;
   padding: 4px 8px;
   border: none;
