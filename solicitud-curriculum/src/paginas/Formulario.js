@@ -65,7 +65,7 @@ function FormularioPage() {
 
         {requisitos && (
           <div style={{ marginBottom: '20px' }}>
-            <h3>Resumen de requisitos solicitados</h3>
+            <h3>Resumen de la informacion registrada</h3>
             <ul>
               {requisitos.habilidades.map((h, i) => {
                 let claseNivel = 'habilidad-basico';
@@ -80,7 +80,7 @@ function FormularioPage() {
               })}
             </ul>
             <p><strong>Años de experiencia:</strong> {requisitos.experiencia}</p>
-            <p><strong>Nivel de estudios requeridos:</strong> {requisitos.estudios}</p>
+            <p><strong>Nivel de estudios:</strong> {requisitos.estudios}</p>
             <p><strong>Descripción:</strong> {requisitos.descripcion}</p>
           </div>
         )}
