@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function HabilidadesPage() {
@@ -12,6 +12,10 @@ function HabilidadesPage() {
   const [colorFondo, setColorFondo] = useState('#ffffff');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "Postulación";
+  }, []);
+
   const cambiarColorFondo = () => {
     const colores = ['#ffffff', '#f0f0f0', '#f5e6b3'];
     const indiceActual = colores.indexOf(colorFondo);
@@ -24,6 +28,11 @@ function HabilidadesPage() {
     setHabilidades([...habilidades, { habilidad, nivel }]);
     setHabilidad('');
     setNivel('Básico');
+  };
+
+  const eliminarHabilidad = (indice) => {
+    const nuevasHabilidades = habilidades.filter((_, i) => i !== indice);
+    setHabilidades(nuevasHabilidades);
   };
 
   const continuar = () => {
@@ -42,7 +51,7 @@ function HabilidadesPage() {
         descripcion,
       };
       localStorage.setItem('requisitos', JSON.stringify(datos));
-      navigate('/formulario');
+      navigate('/formulario'); // ✅ Navegación interna, misma pestaña
     }
   };
 
@@ -59,11 +68,11 @@ function HabilidadesPage() {
           <button onClick={cambiarColorFondo}>Cambiar fondo</button>
         </div>
 
-        <h2>Solicitud de Requisitos</h2>
+        <h2>Formulario de postulación</h2>
 
         {paso === 1 && (
           <>
-            <h3>Paso 1: Ingresar habilidades requeridas</h3>
+            <h3>Paso 1: Ingresar habilidades</h3>
             <input
               type="text"
               placeholder="Ej: React, Comunicación, Liderazgo"
@@ -80,6 +89,13 @@ function HabilidadesPage() {
               {habilidades.map((h, i) => (
                 <li key={i}>
                   <strong>{h.habilidad}</strong> - Nivel: {h.nivel}
+                  <button
+                    onClick={() => eliminarHabilidad(i)}
+                    style={{ marginLeft: '10px', color: 'red' }}
+                    title="Eliminar habilidad"
+                  >
+                    ❌
+                  </button>
                 </li>
               ))}
             </ul>
@@ -88,7 +104,7 @@ function HabilidadesPage() {
 
         {paso === 2 && (
           <>
-            <h3>Paso 2: Años de experiencia requeridos</h3>
+            <h3>Paso 2: Años de experiencia</h3>
             <input
               type="number"
               placeholder="Ej: 3"
@@ -100,7 +116,7 @@ function HabilidadesPage() {
 
         {paso === 3 && (
           <>
-            <h3>Paso 3: Nivel de estudios requeridos</h3>
+            <h3>Paso 3: Nivel de estudios</h3>
             <select value={estudios} onChange={(e) => setEstudios(e.target.value)}>
               <option value="">Seleccione una opción</option>
               <option value="Técnico">Técnico</option>
@@ -122,7 +138,7 @@ function HabilidadesPage() {
 
         {paso === 5 && (
           <>
-            <h3>Resumen de requisitos ingresados</h3>
+            <h3>Resumen de informacion ingresada</h3>
             <ul>
               {habilidades.map((h, i) => (
                 <li key={i}>
@@ -131,7 +147,7 @@ function HabilidadesPage() {
               ))}
             </ul>
             <p><strong>Años de experiencia:</strong> {experiencia}</p>
-            <p><strong>Nivel de estudios requeridos:</strong> {estudios}</p>
+            <p><strong>Nivel de estudios:</strong> {estudios}</p>
             <p><strong>Descripción:</strong> {descripcion}</p>
           </>
         )}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function FormularioPage() {
   const [nombre, setNombre] = useState('');
@@ -6,6 +7,7 @@ function FormularioPage() {
   const [correo, setCorreo] = useState('');
   const [requisitos, setRequisitos] = useState(null);
   const [colorFondo, setColorFondo] = useState('#ffffff');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const datosGuardados = localStorage.getItem('requisitos');
@@ -34,6 +36,15 @@ function FormularioPage() {
     }
 
     alert('Bien hecho, correo enviado de forma correcta');
+
+    // Reiniciar campos
+    setNombre('');
+    setApellido('');
+    setCorreo('');
+    localStorage.removeItem('requisitos');
+
+    // Redirigir al inicio
+    navigate('/');
   };
 
   const cambiarColorFondo = () => {
